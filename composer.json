@@ -1,0 +1,18 @@
+{
+    "name": "willi/stripe-payment",
+    "description": "api de pagamento stripe",
+    "autoload": {
+        "psr-4": {
+            "StripePayment\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Willian Eliseu da Silva",
+            "email": "w.eliseu@gmail.com"
+        }
+    ],
+    "require": {
+        "stripe/stripe-php": "^17.6"
+    }
+}
