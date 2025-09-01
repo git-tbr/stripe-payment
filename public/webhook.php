@@ -64,12 +64,10 @@ switch ($event->type) {
             $usData = $us->getUserDataByHash($paymentData['controle']);
 
             #atualizando pagamento
-            $estado = $data['estado'];
             $pay->updatePayment("pago", $currency, $paymentData['id']);
 
             #atualizando usuário
-            $state = $estado == "pago" ? 1 : 0;
-            $us->updateUser($state, $usData['id']);
+            $us->updateUser(1, $usData['id']);
 
             #salvar purchase
             $pay->insertPurchase($usData['event'], $usData['id'], $paymentData['valor'], $currency, $paymentData['payment_intent'], $paymentData['controle']);

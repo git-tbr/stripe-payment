@@ -24,7 +24,6 @@ $data = json_decode(file_get_contents('php://input'), true) ?? $_POST;
 //var_dump($data);die();
 
 $userId = $data['userid'];
-$company = $data['company'];
 $type = 'producao';
 $descricao = $data['descricao'];
 $urlSucesso = $data['urlsucesso'];
