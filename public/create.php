@@ -19,12 +19,11 @@ use StripePayment\library\PaymentData;
 use Stripe\StripeClient;
 use Stripe\Customer;
 
-
 $data = json_decode(file_get_contents('php://input'), true) ?? $_POST;
-$userId = $data['userid'] ?? 215221;
-$company = $data['company'] ?? 22;
+$userId = $data['userid'];
+$company = $data['company'];
 $type = 'producao';
-$descricao = 'Pagamento da taxa de inscrição do Curso Revisão Pré-Prova';
+$descricao = $data['descricao'];
 
 #chave da empresa
 $sk = new SecretKey($company);
@@ -70,6 +69,7 @@ try {
     PaymentData::saveIntent($paymentData);
 
     $retorno = [
+        'code' => 1,
         'clientSecret' => $paymentIntent->client_secret,
     ];
 
@@ -77,6 +77,7 @@ try {
 } catch (Error $e) {
     http_response_code(500);
     echo json_encode([
+        'code' => 0,
         'error' => $e->getMessage()
     ]);
 }
