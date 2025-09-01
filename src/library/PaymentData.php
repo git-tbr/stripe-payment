@@ -38,13 +38,14 @@ class PaymentData
         return isset($search) ? $search : 0;
     }
 
-    public function updatePayment($estado, $id)
+    public function updatePayment($estado, $moeda, $id)
     {
         sql([
-            "statement" => "UPDATE pagamentos.pedidos_stripe SET estado=? WHERE id=?",
-            "types" => "si",
+            "statement" => "UPDATE pagamentos.pedidos_stripe SET estado=?, moeda=? WHERE id=?",
+            "types" => "ssi",
             "parameters" => [
                 $estado,
+                $moeda,
                 $id
             ]
         ]);

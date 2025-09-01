@@ -13,7 +13,7 @@ class UserData
         }
     }
 
-    public function getUserData(): array | int
+    public function getUserData()
     {
         $search = sql([
             "statement" => "SELECT * FROM tbrevent.registration WHERE id = ?",
@@ -41,7 +41,7 @@ class UserData
         return isset($search) ? $search['value'] * 100 : 0;
     }
 
-    public function getUserDataByHash($controle): array | int
+    public function getUserDataByHash($controle)
     {
         $search = sql([
             "statement" => "SELECT * FROM tbrevent.registration WHERE control_hash = ?",
