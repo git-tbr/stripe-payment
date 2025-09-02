@@ -30,7 +30,23 @@ $urlSucesso = $data['urlsucesso'];
 $urlCancelado = $data['urlcancelado'];
 $produtoAluno = $data['produtoAluno'];
 $produtoNovo = $data['produtoNovo'];
-$priceId = $data['categoria'] == 'aluno' ? $produtoAluno : $produtoNovo;
+$produtoDesconto = $data['produtoDesconto'];
+
+$priceId;
+
+switch($data['categoria']){
+    case 'aluno':
+        $priceId = $produtoAluno;
+        break;
+    case 'novo':
+        $priceId = $produtoNovo;
+        break;
+    case 'cupom':
+        $priceId = $produtoDesconto;
+        break;
+}
+
+//$priceId = $data['categoria'] == 'aluno' ? $produtoAluno : $produtoNovo;
 
 #chave da empresa
 $sk = new SecretKey($company);
